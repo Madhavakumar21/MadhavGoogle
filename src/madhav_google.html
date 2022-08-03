@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>New Tab</title>
+        <style>
+            #logo {
+                margin-top: 90px;
+                margin-bottom: 25px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            #searchtext {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 35px;
+                height: 40px;
+                width: 650px;
+                font-size: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+                color: rgba(0, 0, 0, 0.8);
+                border-radius: 30px;
+                padding-left: 15px;
+                padding-right: 15px;
+                outline: none;
+                border: 1px solid rgba(0, 0, 0, 0.3);
+            }
+            #searchtext:focus {
+                box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.2),
+                            0 2px 3px 0 rgba(0,0,0,.19);
+            }
+            #searchtext:hover {
+                box-shadow: 0 0px 3px 0 rgba(0, 0, 0, 0.2),
+                            0 2px 3px 0 rgba(0,0,0,.19);
+            }
+            ::placeholder {
+                opacity: 0.3;
+            }
+            :-ms-input-placeholder {
+                opacity: 0.3;
+            }
+            ::-ms-input-placeholder {
+                opacity: 0.3;
+            }
+
+            #logos {
+                display: flex;
+                justify-content: center;
+            }
+            .app_logo {
+                margin: 15px;
+            }
+            .app_logo:hover {
+                border: 5px solid rgba(0, 0, 0, 0.2);
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+        </style>
+        <script>
+            function search(search_string) {
+                original_search_link = "https://google.com/search?q=" + search_string.replace(/\s+/g, "+");
+                location.href = original_search_link;
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+
+                document.querySelector('#searchtext').onkeydown = function(event) {
+                    if(event.keyCode === 13) {
+                        search(this.value);
+                    }
+                }
+
+                document.querySelectorAll('.app_logo').forEach(function(app_btn) {
+                    app_btn.onclick = function() {
+                        location.href = app_btn.dataset.link;
+                    }
+                });
+
+            });
+        </script>
+    </head>
+    <body>
+        <img id = "logo" src = "madhav_google_logo.png" alt = "madhav_google_logo.png">
+        <input id = "searchtext" placeholder="Search with Madhav Google" type = "text">
+        <div id = "logos">
+            <img class = "app_logo" data-link = "https://github.com/Madhavakumar21" src = "github_logo.png" alt = "github_logo.png">
+            <img class = "app_logo" data-link = "https://mail.google.com/mail/u/0/#inbox" src = "gmail_logo.png" alt = "gmail_logo.png">
+            <img class = "app_logo" data-link = "https://outlook.live.com" src = "outlook_logo.png" alt = "outlook_logo.png">
+            <img class = "app_logo" data-link = "http://www.youtube.com" src = "youtube_logo.png" alt = "youtube_logo.png">
+        </div>
+    </body>
+</html>
